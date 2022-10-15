@@ -56,7 +56,7 @@
                                 <li class="page-item">…</li>
                             </f:if>
                             <f:for each="{paginatedItems.pagination.allPageNumbers}" as="page">
-                                <f:if condition="{page} == {paginator.currentPageNumber}">
+                                <f:if condition="{page} == {paginatedItems.paginator.currentPageNumber}">
                                     <f:then>
                                         <li class="page-item current active">
                                             <span class="page-link">{page}</span>

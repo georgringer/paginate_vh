@@ -45,7 +45,7 @@
                 <f:if condition="{paginatedItems.paginator.numberOfPages} > 1">
                     <nav aria-label="pagebrowser">
                         <ul class="f3-widget-paginator pagination">
-                            <f:if condition="{paginatedItems.pagination.previousPageNumber} && {pagination.previousPageNumber} >= {pagination.firstPageNumber}">
+                            <f:if condition="{paginatedItems.pagination.previousPageNumber} && {paginatedItems.pagination.previousPageNumber} >= {paginatedItems.pagination.firstPageNumber}">
                                 <li class="previous">
                                     <a href="{f:uri.page(additionalParams:{currentPage:pagination.previousPageNumber})}" title="previous" class="page-link">
                                         &lt;
@@ -72,7 +72,7 @@
                             <f:if condition="{paginatedItems.pagination.hasMorePages}">
                                 <li class="page-item">…</li>
                             </f:if>
-                            <f:if condition="{paginatedItems.pagination.nextPageNumber} && {pagination.nextPageNumber} <= {pagination.lastPageNumber}">
+                            <f:if condition="{paginatedItems.pagination.nextPageNumber} && {paginatedItems.pagination.nextPageNumber} <= {paginatedItems.pagination.lastPageNumber}">
                                 <li class="next">
                                     <a href="{f:uri.page(additionalParams:{currentPage:pagination.nextPageNumber})}" title="next" class="page-link">
                                         &gt;

@@ -16,6 +16,7 @@ $EM_CONF[$_EXTKEY] = [
         'conflicts' => [
         ],
         'suggests' => [
+            'numbered_pagination' => '1.0.1-1.99.99'
         ],
     ],
 ];

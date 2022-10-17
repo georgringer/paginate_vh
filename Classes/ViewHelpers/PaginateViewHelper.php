@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace GeorgRinger\PaginateVh\ViewHelpers;
 
 use Closure;
+use GeorgRinger\NumberedPagination\NumberedPagination;
 use GeorgRinger\PaginateVh\NotPaginatableException;
 use TYPO3\CMS\Core\Pagination\ArrayPaginator;
 use TYPO3\CMS\Core\Pagination\PaginationInterface;
@@ -36,6 +37,7 @@ class PaginateViewHelper extends AbstractViewHelper
         $this->registerArgument('objects', 'mixed', 'array or queryresult', true);
         $this->registerArgument('as', 'string', 'new variable name', true);
         $this->registerArgument('itemsPerPage', 'int', 'items per page', false, 10);
+        $this->registerArgument('numberOfPages', 'int', 'items per page', false, 10);
         $this->registerArgument('argumentName', 'string', 'name for argument', false, 'currentPage');
     }
 
@@ -47,7 +49,7 @@ class PaginateViewHelper extends AbstractViewHelper
 
         $templateVariableContainer = $renderingContext->getVariableProvider();
         $templateVariableContainer->add($arguments['as'], [
-            'pagination' => self::getPagination($arguments),
+            'pagination' => self::getPagination($arguments, (int)$arguments['numberOfPages']),
             'paginator' => self::getPaginator($arguments),
             'name' => $arguments['as'],
         ]);
@@ -56,9 +58,12 @@ class PaginateViewHelper extends AbstractViewHelper
         return $output;
     }
 
-    protected static function getPagination(array $arguments): PaginationInterface
+    protected static function getPagination(array $arguments, int $numberOfPages): PaginationInterface
     {
         $paginator = self::getPaginator($arguments);
+        if (class_exists(NumberedPagination::class) && $numberOfPages > 0) {
+            return GeneralUtility::makeInstance(NumberedPagination::class, $paginator, $numberOfPages);
+        }
         return GeneralUtility::makeInstance(SimplePagination::class, $paginator);
     }
 

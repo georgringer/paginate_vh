@@ -67,3 +67,21 @@ Different example
         </ul>
     </f:if>
 ```
+
+### Routing
+
+```yaml
+  Pagination:
+    type: Simple
+    limitToPages: [5]
+    routePath: '/seite/{currentPage}'
+    requirements:
+        currentPage: '[0-9]{1,3}'
+    _arguments:
+        currentPage: 'currentPage'
+    aspects:
+        currentPage:
+            type: StaticRangeMapper
+            start: '1'
+            end: '20'
+```

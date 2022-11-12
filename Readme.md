@@ -49,7 +49,7 @@ Different example
                     </f:then>
                     <f:else>
                         <li class="page-item">
-                            <a href="{f:uri.page(additionalParams:{currentPage:currentPage:page})}" class="page-link">{page}</a>
+                            <a href="{f:uri.page(additionalParams:{currentPage:page})}" class="page-link">{page}</a>
                         </li>
                     </f:else>
                 </f:if>

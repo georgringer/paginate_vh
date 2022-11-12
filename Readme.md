@@ -30,9 +30,9 @@ Different example
     </div>
     <f:if condition="{paginatedItems.paginator.numberOfPages} > 1">
         <ul class="f3-widget-paginator pagination">
-            <f:if condition="{paginatedItems.pagination.previousPageNumber} && {pagination.previousPageNumber} >= {pagination.firstPageNumber}">
+            <f:if condition="{paginatedItems.pagination.previousPageNumber} && {paginatedItems.pagination.previousPageNumber} >= {paginatedItems.pagination.firstPageNumber}">
                 <li class="previous">
-                    <a href="{f:uri.page(additionalParams:{currentPage:pagination.previousPageNumber})}" title="previous" class="page-link">
+                    <a href="{f:uri.page(additionalParams:{currentPage:paginatedItems.pagination.previousPageNumber})}" title="previous" class="page-link">
                         &lt;
                     </a>
                 </li>
@@ -41,7 +41,7 @@ Different example
                 <li class="page-item">…</li>
             </f:if>
             <f:for each="{paginatedItems.pagination.allPageNumbers}" as="page">
-                <f:if condition="{page} == {paginator.currentPageNumber}">
+                <f:if condition="{page} == {paginatedItems.paginator.currentPageNumber}">
                     <f:then>
                         <li class="page-item current active">
                             <span class="page-link">{page}</span>
@@ -57,9 +57,9 @@ Different example
             <f:if condition="{paginatedItems.pagination.hasMorePages}">
                 <li class="page-item">…</li>
             </f:if>
-            <f:if condition="{paginatedItems.pagination.nextPageNumber} && {pagination.nextPageNumber} <= {pagination.lastPageNumber}">
+            <f:if condition="{paginatedItems.pagination.nextPageNumber} && {paginatedItems.pagination.nextPageNumber} <= {paginatedItems.pagination.lastPageNumber}">
                 <li class="next">
-                    <a href="{f:uri.page(additionalParams:{currentPage:pagination.nextPageNumber})}" title="next" class="page-link">
+                    <a href="{f:uri.page(additionalParams:{currentPage:paginatedItems.pagination.nextPageNumber})}" title="next" class="page-link">
                         &gt;
                     </a>
                 </li>

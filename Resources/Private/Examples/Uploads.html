@@ -47,7 +47,7 @@
                         <ul class="f3-widget-paginator pagination">
                             <f:if condition="{paginatedItems.pagination.previousPageNumber} && {paginatedItems.pagination.previousPageNumber} >= {paginatedItems.pagination.firstPageNumber}">
                                 <li class="previous">
-                                    <a href="{f:uri.page(additionalParams:{currentPage:pagination.previousPageNumber})}" title="previous" class="page-link">
+                                    <a href="{f:uri.page(additionalParams:{currentPage:paginatedItems.pagination.previousPageNumber})}" title="previous" class="page-link">
                                         &lt;
                                     </a>
                                 </li>
@@ -64,7 +64,7 @@
                                     </f:then>
                                     <f:else>
                                         <li class="page-item">
-                                            <a href="{f:uri.page(additionalParams:{currentPage:currentPage:page})}" class="page-link">{page}</a>
+                                            <a href="{f:uri.page(additionalParams:{currentPage:page})}" class="page-link">{page}</a>
                                         </li>
                                     </f:else>
                                 </f:if>
@@ -74,7 +74,7 @@
                             </f:if>
                             <f:if condition="{paginatedItems.pagination.nextPageNumber} && {paginatedItems.pagination.nextPageNumber} <= {paginatedItems.pagination.lastPageNumber}">
                                 <li class="next">
-                                    <a href="{f:uri.page(additionalParams:{currentPage:pagination.nextPageNumber})}" title="next" class="page-link">
+                                    <a href="{f:uri.page(additionalParams:{currentPage:paginatedItems.pagination.nextPageNumber})}" title="next" class="page-link">
                                         &gt;
                                     </a>
                                 </li>

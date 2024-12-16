@@ -8,10 +8,10 @@ $EM_CONF[$_EXTKEY] = [
     'clearCacheOnLoad' => true,
     'author' => 'Georg Ringer',
     'author_email' => 'mail@ringer.it',
-    'version' => '0.0.2',
+    'version' => '0.0.3',
     'constraints' => [
         'depends' => [
-            'typo3' => '10.4.0-13.4.99',
+            'typo3' => '12.4.0-13.4.99',
         ],
         'conflicts' => [
         ],

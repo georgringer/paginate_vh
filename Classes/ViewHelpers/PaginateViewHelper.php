@@ -6,6 +6,7 @@ namespace GeorgRinger\PaginateVh\ViewHelpers;
 use Closure;
 use GeorgRinger\NumberedPagination\NumberedPagination;
 use GeorgRinger\PaginateVh\NotPaginatableException;
+use TYPO3\CMS\Core\Http\Request;
 use TYPO3\CMS\Core\Pagination\ArrayPaginator;
 use TYPO3\CMS\Core\Pagination\PaginationInterface;
 use TYPO3\CMS\Core\Pagination\PaginatorInterface;
@@ -86,7 +87,9 @@ class PaginateViewHelper extends AbstractViewHelper
 
     protected static function getPageNumber(string $argumentName): int
     {
-        $page = (int)GeneralUtility::_GP($argumentName);
+        /** @var Request $request */
+        $request = $GLOBALS['TYPO3_REQUEST'];
+        $page = (int)($request->getParsedBody()[$argumentName] ?? $request->getQueryParams()[$argumentName] ?? 0);
         return $page > 0 ? $page : 1;
     }
 }
